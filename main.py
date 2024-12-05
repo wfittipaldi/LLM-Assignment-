@@ -5,14 +5,14 @@ def process_input(fname: str) -> list[str]:
     pass
 
 
-def ollama_batch(items: list[str], n: int) -> list[str]:
+def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
     """
     Curtis
     """
     pass
 
 
-def ollama_reduce(items: list[str], n: int) -> list[str]:
+def ollama_reduce(items: list[str], n: int, search: str) -> list[str]:
     """
     Will
     """
