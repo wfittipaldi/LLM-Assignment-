@@ -1,0 +1,8 @@
+# ignore all files
+*
+
+# except
+!main.py
+!README.md
+!requirements.txt
+
