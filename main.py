@@ -1,3 +1,4 @@
+import os
 def process_input(fname: str) -> list[str]:
     """
     Levi
@@ -14,8 +15,13 @@ def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
 
 
 def ollama_reduce(items: list[str], n: int, search: str) -> list[str]:
-    """
-    Will
-    """
+   """
+   Will
+   """
+    while len(n) :
+
+
+
+    print(output_results)
     pass
 
