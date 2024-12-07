@@ -18,10 +18,20 @@ def ollama_reduce(items: list[str], n: int, search: str) -> list[str]:
    """
    Will
    """
-    while len(n) :
+   x = 0
+   y = 20
+   list_of_items = []
+   while y < len(items):
+      split_items = items[x:y]
+      x = y
+      y +=20
+      filters = ollama_batch(split_items,n,search)
+      list_of_items.extend(filters)
+    return list_of_items
 
 
 
-    print(output_results)
-    pass
+
+        print(output_results)
+        pass
 
