@@ -7,7 +7,7 @@ def process_input(fname: str) -> list[str]:
     """
     with open(fname, 'r', encoding='utf-8') as f:
         file_text = f.read() 
-        return file_text.split('\n---\n')
+        return file_text.split('---')
 
 
 def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
