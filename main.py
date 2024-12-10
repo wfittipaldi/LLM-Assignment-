@@ -1,6 +1,6 @@
 import os
 import ollama
-
+import sys
 
 def process_input(fname: str) -> list[str]:
     """
@@ -50,5 +50,19 @@ def ollama_reduce(items: list[str], n: int, search: str) -> list[str]:
         return ollama_batch(list_of_items, n, search)
     return list_of_items
 
+def craig(inventory_file):
+    user_search = input("This is Craig, your friendly neighborhood used marketplace manager. What are you looking for today?") 
+    try:
+        while user_search != 'q':
+            search_size = input("And how many results would you like me to return?")
+            matches = ollama_reduce(process_input(inventory_file), int(search_size), user_search)
+            print("Here are the best items that match your request:")
+            for item in matches: 
+                print(item)
+            user_search = input("Would you like to search again? ('q' to quit).")
+    except ValueError:
+        print("User input is invalid. Make sure that your search uses valid characters and that your number of desired results is a positive integer.")
 
-
+if __name__ == "__main__":
+    craig(sys.argv[1])
+    pass
