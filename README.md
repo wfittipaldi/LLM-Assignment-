@@ -13,19 +13,27 @@ This project is licensed under the GNU General Public License v3.0 `GPL-3.0`.
 
 ## How To
 
+First, make sure that you have valid [OpenAI API keys](https://platform.openai.com/docs/api-reference/authentication).
+
 Craig is a really simple tool to use. Just run 
+
 ```
 python main.py file.txt
 ```
-from the terminal, where file.txt is the path to your inventory. Since our tool makes use of OpenAI's ChatGPT
+
+from the terminal, where file.txt is the path to your inventory. 
+Since our tool makes use of OpenAI's ChatGPT
 API you must also provide a valid API key to make the necessary API calls. 
 
 ## Data Format Requirements
-In order to use Craig your inventory data must be formatted correctly. It expects inventory data
-to be a plain text file with items separated by a horizontal line in Markdown ('---'). 
+
+In order to use Craig your inventory data must be formatted correctly. 
+It expects inventory data to be a plain text file with items 
+separated by a horizontal line in Markdown ('---'). 
 
 
 Example: 
+
 ```
 *Vintage Wooden Dresser (4 Drawers)**  
 **Price:** $75  
