@@ -1,6 +1,6 @@
-import os
-import ollama
+from openai import OpenAI
 import sys
+
 
 def process_input(fname: str) -> list[str]:
     """
@@ -15,19 +15,30 @@ def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
     """
     Curtis
     """
-    message: list[str] = []
-    message.append("I am searching for the following item: {:s}.\n".format(search))
-    message.append("This is a list of available items:\n")
-    for item in items:
-        message.append("item:\n" + item + "\n")
-    message.append("\nPlease tell me the top {:d} items which fit the "
-                   "description of what I was looking for. "
-                   "Please do not generate any other text. "
-                   "Please separate each of the top items with the delimiting line '---'.".format(n))
-    response = ollama.generate(model="gemma2:2b", prompt="".join(message))
+    all_items = "\n".join(items)
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are Craig, the manager of a used marketplace "
+                "and customers want to ask you for items that fit their specific needs.\n"
+                "You must recommend to them the top {:d} items from "
+                "the list of items you have in store. The items you have in store "
+                "are as follows:\n{:s}"
+                "\n\nWhen the user tells you what they are looking for, "
+                "respond with only the top {:d} items delimited with the line '---' between them.".format(n, all_items, n)
+            },
+            {
+                "role": "user",
+                "content": "The item I am looking for is {:s}".format(search)
+            }
+        ]
+    )
+
     items = [
         item.strip()
-        for item in response.response.split("---")
+        for item in completion.choices[0].message.content.split("---")
         if item != ""
     ]
     return items
@@ -64,5 +75,6 @@ def craig(inventory_file):
         print("User input is invalid. Make sure that your search uses valid characters and that your number of desired results is a positive integer.")
 
 if __name__ == "__main__":
+    client = OpenAI()
     craig(sys.argv[1])
     pass
