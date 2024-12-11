@@ -77,4 +77,3 @@ def craig(inventory_file):
 if __name__ == "__main__":
     client = OpenAI()
     craig(sys.argv[1])
-    pass
