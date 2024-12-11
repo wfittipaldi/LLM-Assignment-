@@ -4,7 +4,11 @@ import sys
 
 def process_input(fname: str) -> list[str]:
     """
-    Levi
+    Takes in a file name and outputs the inventory contents present in that file as a string. 
+    Parameters: 
+        fname: the name of a file
+    Returns: 
+        list of inventory items
     """
     with open(fname, 'r', encoding='utf-8') as f:
         file_text = f.read() 
@@ -13,7 +17,13 @@ def process_input(fname: str) -> list[str]:
 
 def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
     """
-    Curtis
+    A helper function which makes an API call to gpt-4o-mini model given a specific batch of inventory.
+    Parameters: 
+        items: list of inventory items
+        n: integer for how many items to return
+        search: the query given by the user
+    Returns: 
+        list of items selected by the LLM 
     """
     all_items = "\n".join(items)
     completion = client.chat.completions.create(
@@ -46,7 +56,14 @@ def ollama_batch(items: list[str], n: int, search: str) -> list[str]:
 
 def ollama_reduce(items: list[str], n: int, search: str) -> list[str]:
     """
-    Will
+    Utilizing the ollama_batch, this function splits up the entire inventory into batches so that the user's query does
+    not exceed the context size limits of the model. After running the users query on each batch it returns the top 'n' options.
+    Parameters: 
+        items: list of inventory items
+        n: integer for how many items to return
+        search: the query given by the user
+    Returns: 
+        list of items selected by the LLM 
     """
     x = 0
     y = 20

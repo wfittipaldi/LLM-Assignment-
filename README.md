@@ -3,6 +3,7 @@
 Link to [presentation](https://docs.google.com/presentation/d/1QqHcad7JCD3IZCV7FeXc7cvusLqQHAiUNhoUKpX7eRM/edit?usp=sharing)
 
 ## Author Information:
+
 **Name(s)**: Curtis Barnhart, Will Fittipaldi, Levi Wicks
 **Email(s)**: cbarnhart@westmont.edu, wfittipaldi@westmont.edu, lwicks@westmont.edu
 
